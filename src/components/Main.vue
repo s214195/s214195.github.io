@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import CompOne from './CompOne.vue'
 import FireStore from './FireStore.vue'
 import FoodItem from './FoodItem.vue'
 import Login from './Register.vue'
