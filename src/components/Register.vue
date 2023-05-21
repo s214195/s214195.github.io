@@ -31,7 +31,6 @@
         router.push('/UserList')
       })
       .catch((error) => {
-        navigator.vibrate(2000);
         console.log(error.code);
         alert(error.message);
       })
