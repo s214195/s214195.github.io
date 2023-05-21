@@ -12,6 +12,7 @@
           <li class="nav-item"><router-link class="nav-link" to="/DoctorList"> DoctorList</router-link></li>
           <li class="nav-item"><router-link class="nav-link" to="/Map"> Map</router-link></li>
           <li class="nav-item"><router-link class="nav-link" to="/Camera"> Camera</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" to="/About"> About</router-link></li>
           <li class="nav-item" v-if="isLoggedIn">
             <button class="btn btn-primary sign-out-btn" @click="handleSignOut">Sign out</button>
           </li>
