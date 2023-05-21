@@ -22,6 +22,7 @@ const router = createRouter({
     }
   },
   {path: "/Camera", component: () => import ("../components/Camera.vue")},
+  {path: "/About", component: () => import ("../components/About.vue")},
   {path: "/DoctorDetail/:id", component: () => import ("../components/DoctorDetail.vue"),name: "DoctorDetail",},
     {path: "/SignIn", component: () => import ("../components/SignIn.vue")}
    
