@@ -1,19 +1,15 @@
 <template>
   <div class="doctors-list">
     <div v-for="doctor in doctors" :key="doctor.id" class="doctor-card">
-      <router-link :to="{ name: 'DoctorDetail', params: { id: doctor.id } }" class="card-link">
-    <!-- rest of your card code goes here -->
-    <img v-bind:src="'https://firebasestorage.googleapis.com/v0/b/e-doctor-923d0.appspot.com/o/logo.png?alt=media&token=81045d1f-6fd9-43bf-b15f-7e7fb5c3c286'" alt="Doctor Image" class="doctor-image" />
+      <img v-bind:src="'https://firebasestorage.googleapis.com/v0/b/e-doctor-923d0.appspot.com/o/logo.png?alt=media&token=81045d1f-6fd9-43bf-b15f-7e7fb5c3c286'" alt="Doctor Image" class="doctor-image" />
       <div class="doctor-info">
         <h2>{{ doctor.name }} {{ doctor.Surname }}</h2>
         <p>City: {{ doctor.city }}</p>
         <p>Specialization: {{ doctor.specialization }}</p>
       </div>
       <div class="rating">
-          <span>Rating: ({{ getAverage(doctor.rating).toFixed(2) }})</span>
-        </div>
-      </router-link>
-      
+        <i class="fa fa-star" v-for="n in Math.round(getAverage(doctor.rating))" :key="n"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -28,21 +24,15 @@ const doctors = ref([]);
 (async () => {
   const doctorCollection = collection(db, 'doctors');
   const doctorSnapshot = await getDocs(doctorCollection);
-  doctors.value = doctorSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  doctors.value = doctorSnapshot.docs.map(doc => doc.data());
 })();
 
 function getAverage(rating) {
-  console.log(rating.reduce((a, b) => a + b, 0) / rating.length)
   return rating.reduce((a, b) => a + b, 0) / rating.length;
 }
 </script>
 
 <style scoped>
-
-.card-link {
-  text-decoration: none;
-  color: inherit;
-}
 .doctors-list {
   display: flex;
   flex-direction: column;
