@@ -1,16 +1,7 @@
-<template>
-  <h1>Sign In</h1>
-  <p><input type="text" placeholder="Email" v-model="email"/></p>
-  <p><input type="password" placeholder="Password" v-model="password"/></p>
-  <p v-if="errMsg">{{ errMsg }}</p>
-  <p><button @click="register">Submit</button></p>
-  <p><button @click="SignInWithGoogle">Sign In With Google</button></p>
-</template>
-
 <script setup>
   
   import { ref } from "vue"
-  import { getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+  import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
   import { useRouter} from 'vue-router';
   const email = ref("")
   const password = ref("")
@@ -23,10 +14,13 @@
       .then((data) => {
         console.log("Successfully signed in!")
         console.log(auth.currentUser)
-        router.push('/UserList')
+        router.push('/DoctorList')
       })
       .catch((error) => {
+        if ("vibrate" in navigator) {
+        console.log("vibration also HERE")
         navigator.vibrate(2000);
+      }
         console.log(error.code);
         switch (error.code) {
           case "auth/invalid-email":
@@ -45,7 +39,18 @@
       })
   };
   const SignInWithGoogle = () => {
-    
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(getAuth(), provider)
+      .then((result) => {
+        console.log(result.user);
+        router.push("/DoctorList");
+      })
+      .catch((error) => {
+        console.log(error.code);
+        alert(error.message);
+      })
+      
   };
+  ;
 
 </script>

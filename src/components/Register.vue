@@ -28,7 +28,7 @@
     createUserWithEmailAndPassword(getAuth(), email.value, password.value)
       .then((data) => {
         console.log("Succesfull registration!")
-        router.push('/UserList')
+        router.push('/DoctorList')
       })
       .catch((error) => {
         navigator.vibrate(2000);
@@ -41,7 +41,7 @@
     signInWithPopup(getAuth(), provider)
       .then((result) => {
         console.log(result.user);
-        router.push("/UserList");
+        router.push("/DoctorList");
       })
       .catch((error) => {
         console.log(error.code);
