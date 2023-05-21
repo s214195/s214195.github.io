@@ -4,7 +4,7 @@ import { getAuth, onAuthStateChanged} from 'firebase/auth'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    {path: "/", component: () => import ("../components/Main.vue")},
+    {path: "/", component: () => import ("../components/Register.vue")},
     {path: "/register", component: () => import ("../components/Register.vue")},
     {path: "/UserList", component: () => import ("../components/UserList.vue"),
     meta: {
@@ -22,6 +22,7 @@ const router = createRouter({
     }
   },
   {path: "/Camera", component: () => import ("../components/Camera.vue")},
+  {path: "/DoctorDetail/:id", component: () => import ("../components/DoctorDetail.vue"),name: "DoctorDetail",},
     {path: "/SignIn", component: () => import ("../components/SignIn.vue")}
    
   ]
@@ -45,7 +46,7 @@ router.beforeEach(async (to, from, next) =>{
     if (await getCurrentUser()) {
       next();
     } else {
-      alert("you dont have access!");
+      alert("Sign in to get access");
       next("/register");
     }
   } else {
