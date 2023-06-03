@@ -5,14 +5,13 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><router-link class="nav-link" to="/Register"> Register</router-link></li>
           <li class="nav-item"><router-link class="nav-link" to="/SignIn"> Sign In</router-link></li>
           <li class="nav-item"><router-link class="nav-link" to="/DoctorList"> DoctorList</router-link></li>
-          <li class="nav-item"><router-link class="nav-link" to="/Map"> Map</router-link></li>
-          <li class="nav-item"><router-link class="nav-link" to="/Camera"> Camera</router-link></li>
-          <li class="nav-item"><router-link class="nav-link" to="/About"> About</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" to="/UserProfile"> User Profile</router-link></li>
           <li class="nav-item" v-if="isLoggedIn">
             <button class="btn btn-primary sign-out-btn" @click="handleSignOut">Sign out</button>
           </li>

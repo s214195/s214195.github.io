@@ -6,23 +6,16 @@ const router = createRouter({
   routes: [
     {path: "/", component: () => import ("../components/Register.vue")},
     {path: "/register", component: () => import ("../components/Register.vue")},
-    {path: "/UserList", component: () => import ("../components/UserList.vue"),
-    meta: {
-      requiresAuth: true,
-    }
-  },
   {path: "/DoctorList", component: () => import ("../components/DoctorList.vue"),
     meta: {
       requiresAuth: true,
     }
   },
-  {path: "/Map", component: () => import ("../components/Map.vue"),
+  {path: "/UserProfile", component: () => import ("../components/UserProfile.vue"),
     meta: {
       requiresAuth: true,
     }
   },
-  {path: "/Camera", component: () => import ("../components/Camera.vue")},
-  {path: "/About", component: () => import ("../components/About.vue")},
   {path: "/DoctorDetail/:id", component: () => import ("../components/DoctorDetail.vue"),name: "DoctorDetail",},
     {path: "/SignIn", component: () => import ("../components/SignIn.vue")}
    
