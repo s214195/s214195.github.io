@@ -66,7 +66,7 @@
     </form>
     <button class="btn btn-primary mt-2" @click="takePhoto">Add photos of injury</button>
 <div class="d-flex flex-wrap">
-  <img v-for="(photo, index) in photos" :key="index" :src="photo" width="20" height="20" class="m-1">
+  <img v-for="(photo, index) in photos" :key="index" :src="photo" width="100" height="100" class="m-1">
 </div>
 <button class="btn btn-danger mt-2" @click="cancelAppointment(index)">Cancel Appointment</button>
   </li>
