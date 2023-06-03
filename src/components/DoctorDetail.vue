@@ -3,12 +3,12 @@
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
-          <img v-bind:src="'https://firebasestorage.googleapis.com/v0/b/e-doctor-923d0.appspot.com/o/logo.png?alt=media&token=81045d1f-6fd9-43bf-b15f-7e7fb5c3c286'" alt="Doctor Image" class="img-fluid rounded-circle" />
+          <img v-bind:src="doctor.imageUrl || 'https://firebasestorage.googleapis.com/v0/b/e-doctor-923d0.appspot.com/o/logo.png?alt=media&token=81045d1f-6fd9-43bf-b15f-7e7fb5c3c286'" alt="Doctor Image" class="card-img-top" />
         </div>
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">{{ doctor.name }} {{ doctor.Surname }}</h5>
-            <p class="card-text"><small class="text-muted">Cabinet localization: {{ doctor.city }}</small></p>
+            <p class="card-text"><small class="text-muted">Cabinet adress: {{ doctor.adress }}</small></p>
             <p class="card-text">Specialization: {{ doctor.specialization }}</p>
             <p class="card-text">Experience: {{ doctor.experience }} years</p>
             <p class="card-text">Call doctor: <a :href="'tel:' + doctor.number">{{ doctor.number }}</a></p>
@@ -146,10 +146,6 @@ function openAppointmentModal() {
     appointmentDateInput > currentDate;
 }
   async function makeAppointment() {
-    if (!validateForm()) {
-    alert('Please fill in all fields in the form and ensure the date is in the future!');
-    return;
-  }
   if (!currentUser.value) {
     alert('You need to sign in to make an appointment!');
     return;

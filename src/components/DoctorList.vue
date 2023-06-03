@@ -13,11 +13,12 @@
       
       <div v-for="doctor in filteredDoctors" :key="doctor.id" class="col-lg-4 col-md-6 mb-4">
         <div class="card">
-          <img v-bind:src="'https://firebasestorage.googleapis.com/v0/b/e-doctor-923d0.appspot.com/o/logo.png?alt=media&token=81045d1f-6fd9-43bf-b15f-7e7fb5c3c286'" alt="Doctor Image" class="card-img-top" />
+          <img v-bind:src="doctor.imageUrl || 'https://firebasestorage.googleapis.com/v0/b/e-doctor-923d0.appspot.com/o/logo.png?alt=media&token=81045d1f-6fd9-43bf-b15f-7e7fb5c3c286'" alt="Doctor Image" class="card-img-top" />
           <div class="card-body">
             <router-link :to="{ name: 'DoctorDetail', params: { id: doctor.id } }" class="stretched-link">
             <h5 class="card-title">{{ doctor.name }} {{ doctor.Surname }}</h5>
             <p class="card-text">City: {{ doctor.city }}</p>
+            <p class="card-text">Adress: {{ doctor.adress }}</p>
             <p class="card-text">Specialization: {{ doctor.specialization }}</p>
             <p class="card-text">Number: {{ doctor.number }}</p>
             </router-link>
